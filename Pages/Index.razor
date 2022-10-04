@@ -1,0 +1,37 @@
+﻿@page "/"
+@using  ApexCharts
+
+<PageTitle>Index</PageTitle>
+
+<ApexChart TItem="Country" Width="400"
+           Title="Popultaion">
+
+  
+
+    <ApexPointSeries TItem="Country"
+                     Items="countries"
+                     Name="Net Value"
+                     XValue="e => e.Name"
+                     YValue="e => e.Population"
+                    
+                     SeriesType="SeriesType.Bar" />
+</ApexChart>
+
+@code {
+    private List<Country> countries = new();
+    protected override void OnInitialized()
+    {
+        countries.Add(new Country { Name = "Sweden", Population = 9000000 });
+        countries.Add(new Country { Name = "Finland", Population = 4000000 });
+        countries.Add(new Country { Name = "Norway", Population = 5000000 });
+    }
+
+
+
+
+    class Country {
+        public string Name { get; set; }
+        public int Population { get; set; }
+
+    }
+}
